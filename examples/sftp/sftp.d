@@ -8,6 +8,7 @@ import std.path;
 
 import libssh.session;
 import libssh.sftp;
+import libssh.c_bindings.sftp;
 import libssh.utils;
 import libssh.errors;
 
