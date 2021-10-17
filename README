@@ -161,3 +161,6 @@ message is all that is required once we’ve received the initial email.
 Have fun and happy libssh hacking!
 
 The libssh Team
+
+# What Symmetry team's do
+## we change some dub build step to let it support our windows platform
