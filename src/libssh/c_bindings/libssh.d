@@ -393,6 +393,7 @@ extern (C) {
     int ssh_is_blocking(ssh_session session);
     int ssh_is_connected(ssh_session session);
     int ssh_is_server_known(ssh_session session);
+	bool is_ssh_initialized();
 
     /* LOGGING */
     int ssh_set_log_level(int level);
