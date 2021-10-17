@@ -14,15 +14,6 @@ import libssh.errors;
 
 import connect_ssh;
 
-version(Windows)
-{
-	import core.stdc.stdio;
-}
-else
-{
-	import core.sys.posix.fcntl;
-}
-
 
 int main(string[] argv)
 {
