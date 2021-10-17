@@ -602,6 +602,8 @@ class SSHSession : Disposable {
 
 
     this() {
+	    if (!is_ssh_initialized())
+		    ssh_init();
         auto newSession = ssh_new();
         checkForNullError(newSession, "Error while creating session object");
         this(newSession);
