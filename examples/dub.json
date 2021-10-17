@@ -25,6 +25,10 @@
             "name": "proxy",
             "sourcePaths": [ "./proxy/" ],
             "targetName": "libssh-example-proxy"
-        }
+        }, {
+            "name": "sftp",
+            "sourcePaths": [ "./sftp/" ],
+            "targetName": "libssh-example-sftp"
+	}
     ]
 }

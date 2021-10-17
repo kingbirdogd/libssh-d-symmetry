@@ -915,12 +915,21 @@ class SSHSession : Disposable {
 
     SFTPSession newSFTP() {
         auto result = sftp_new(this._session);
+	auto rc = sftp_init(result);
+	if (rc != SSH_OK) {
+		throw new SFTPException(rc, this._session);
+	}
         checkForNullError(result, this._session);
         return new SFTPSession(this, result);
     }
 
     SFTPSession newSFTP(SSHChannel channel) {
         auto result = sftp_new_channel(this._session, channel._channel);
+	auto rc = sftp_init(result);
+	if (rc != SSH_OK) {
+		throw new SFTPException(rc, this._session);
+	}
+        checkForNullError(result, this._session);
         checkForNullError(result, this._session);
         return new SFTPSession(this, result);
     }
