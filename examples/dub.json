@@ -9,7 +9,7 @@
     "sourcePaths": [ "./common/" ],
 
     "dependencies": {
-        "libssh-d-symmetry": "../"
+        "libssh-d-symmetry": { "path": "../" }
     },
 
     "configurations": [

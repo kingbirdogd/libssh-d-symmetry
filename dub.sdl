@@ -10,7 +10,7 @@ configuration "library" {
   dflags "-mscrtlib=msvcrt" platform="windows"
   lflags "/LIBPATH:${PACKAGE_DIR}" "/LIBPATH:${PACKAGE_DIR}\\vcpkg\\installed\\x86-windows-static\\lib\\" "/NODEFAULTLIB:libcmt" "/NODEFAULTLIB:libvcruntime" platform="windows-x86"
   lflags "/LIBPATH:${PACKAGE_DIR}" "/LIBPATH:${PACKAGE_DIR}\\vcpkg\\installed\\x64-windows-static\\lib\\" "/NODEFAULTLIB:libcmt" "/NODEFAULTLIB:libvcruntime" platform="windows-x86_64"
-  libs "ssh" platform="windows"
-  libs "libssh" platform="linux"
+  libs "ssh" "libssl" "libcrypto" "mbedcrypto" "mbedtls" "mbedx509" "pthreadVC3" "pthreadVCE3" "pthreadVSE3" "Crypt32" "ws2_32" "kernel32" "user32" "gdi32" "winspool" "shell32" "ole32" "oleaut32" "uuid" "comdlg32" "advapi32" platform="windows"
+  libs "stdc++" "libssh" "ssl" "crypto" platform="linux"
 }
 

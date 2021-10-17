@@ -5,3 +5,5 @@ vcpkg
 vcpkg/*
 
 *.lib
+
+examples/*example*
