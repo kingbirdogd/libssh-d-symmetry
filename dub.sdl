@@ -1,0 +1,16 @@
+name "libssh-d-symmetry"
+targetName "libssh-d-symmetry"
+license "LGPL"
+description "D Programming Language binding for libssh: mulitplatform library implementing the SSHv2 and SSHv1 protocol on client and server side. branch by symmetry investments"
+copyright "Artem Pryanichnikov, branch by David AU @ Symmetry Investment"
+
+configuration "library" {
+  preGenerateCommands "${PACKAGE_DIR}\\provision.bat Release x86" platform="windows-x86"
+  preGenerateCommands "${PACKAGE_DIR}\\provision.bat Release x64" platform="windows-x86_64"
+  dflags "-mscrtlib=msvcrt" platform="windows"
+  lflags "/LIBPATH:${PACKAGE_DIR}" "/LIBPATH:${PACKAGE_DIR}\\vcpkg\\installed\\x86-windows-static\\lib\\" "/NODEFAULTLIB:libcmt" "/NODEFAULTLIB:libvcruntime" platform="windows-x86"
+  lflags "/LIBPATH:${PACKAGE_DIR}" "/LIBPATH:${PACKAGE_DIR}\\vcpkg\\installed\\x64-windows-static\\lib\\" "/NODEFAULTLIB:libcmt" "/NODEFAULTLIB:libvcruntime" platform="windows-x86_64"
+  libs "ssh" platform="windows"
+  libs "libssh" platform="linux"
+}
+

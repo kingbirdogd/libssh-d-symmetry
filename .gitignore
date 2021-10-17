@@ -1,0 +1,7 @@
+.dub
+.dub/*
+
+vcpkg
+vcpkg/*
+
+*.lib

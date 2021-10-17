@@ -1,16 +1,15 @@
 {
-    "name": "libssh-d-examples",
+    "name": "libssh-d-symmetry-examples",
     "authors": [
-        "Artem Pryanichnikov"
+        "Artem Pryanichnikov, David AU @ Symmetry Investments"
     ],
     "description": "D Programming Language binding for libssh: mulitplatform library implementing the SSHv2 and SSHv1 protocol on client and server side.",
     "license": "LGPL",
     "targetType": "executable",
     "sourcePaths": [ "./common/" ],
-    "libs": ["libssh"],
 
     "dependencies": {
-        "libssh-d": "*"
+        "libssh-d-symmetry": "../"
     },
 
     "configurations": [
