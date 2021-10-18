@@ -171,7 +171,7 @@ class SSHSession : Disposable {
         if (cb is null) {
             this._sessionCallbacks.auth_function = null;
         } else {
-            this._sessionCallbacks.auth_function = &nativeAuthCallback;
+            this._sessionCallbacks.auth_function = &nativeSessionAuthCallback;
         }
         ssh_set_callbacks(this._session, &this._sessionCallbacks);
     }
@@ -1040,7 +1040,7 @@ private {
         sessionObj._onLogCallback(sessionObj, cast(LogLevel) priority, fromStrZ(message));
     }
 
-    extern(C) int nativeAuthCallback(const char *prompt, char *buf, size_t len,
+    extern(C) int nativeSessionAuthCallback(const char *prompt, char *buf, size_t len,
             int echo, int verify, void *userdata) {
         auto session = cast(SSHSession) userdata;
 

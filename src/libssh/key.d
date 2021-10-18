@@ -65,7 +65,7 @@ class SSHKey : Disposable {
 
     void exportPrivateKeyToFile(string passPhrase, string fileName, AuthCallback authFn = null) {
         auto rc = ssh_pki_export_privkey_file(this._key, toStrZ(passPhrase),
-            authFn is null ? null : &nativeAuthCallback, authFn.ptr, toStrZ(fileName));
+            authFn is null ? null : &nativeKeyAuthCallback, authFn.ptr, toStrZ(fileName));
         checkForRCError(rc, rc);
     }
 
@@ -111,7 +111,7 @@ class SSHKey : Disposable {
             AuthCallback authFn = null) {
         ssh_key result;
         auto rc = ssh_pki_import_privkey_base64(toStrZ(b64), toStrZ(passPhrase),
-            authFn is null ? null : &nativeAuthCallback, authFn.ptr, &result);
+            authFn is null ? null : &nativeKeyAuthCallback, authFn.ptr, &result);
         checkForRCError(rc, rc);
         checkForNullError(result, rc);
         return new SSHKey(result);
@@ -121,7 +121,7 @@ class SSHKey : Disposable {
         AuthCallback authFn = null) {
         ssh_key result;
         auto rc = ssh_pki_import_privkey_file(toStrZ(fileName), toStrZ(passPhrase),
-            authFn is null ? null : &nativeAuthCallback, authFn.ptr, &result);
+            authFn is null ? null : &nativeKeyAuthCallback, authFn.ptr, &result);
         checkForRCError(rc, rc);
         checkForNullError(result, rc);
         return new SSHKey(result);
@@ -186,7 +186,7 @@ class SSHKey : Disposable {
 
 
 private {
-    extern(C) int nativeAuthCallback(const char *prompt, char *buf, size_t len,
+    extern(C) int nativeKeyAuthCallback(const char *prompt, char *buf, size_t len,
             int echo, int verify, void *userdata) {
         auto cb = cast(SSHKey.AuthCallback*) userdata;
         
